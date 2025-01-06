@@ -63,6 +63,8 @@ jobs:
       run: |
             $HOME/android-sdk/emulator/emulator -avd test-emulator -no-window -no-audio -gpu off -netdelay none -netspeed full &
 
+
+
     # Step 8: Wait for Emulator to Boot
     - name: Wait for Emulator
       run: |
