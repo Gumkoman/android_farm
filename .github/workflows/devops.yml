@@ -58,12 +58,16 @@ jobs:
     - name: Accept Android SDK Licenses
       run: |
             yes | sdkmanager --licenses
+
+    - name: Install Required System Image with Debugging
+      run: |
+            sdkmanager --verbose "system-images;android-35;google_apis;x86_64"
     
     - name: Verify System Image Installation
       run: |
             ls -la $ANDROID_HOME/system-images/android-35/google_apis/x86_64
-          
 
+          
     # Step 7: Create and Start an Android Emulator
     - name: Create Android Emulator
       run: |
