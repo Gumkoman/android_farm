@@ -24,15 +24,16 @@ jobs:
       
     #- name: Setup Android SDK
     #  uses: android-actions/setup-android@v2.0.10
-    - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y openjdk-11-jdk unzip wget
-
     - name: Set up Python 3.12
       uses: actions/setup-python@v3
       with:
         python-version: "3.12"
+    
+    - name: sudotest
+      run: |
+            sudo apt-get update
+            sudo apt-get install -y openjdk-11-jdk unzip wget
+  
     - name: Install dependencies
       run: |
           make install
