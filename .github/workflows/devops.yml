@@ -67,7 +67,18 @@ jobs:
       run: |
             ls -la $ANDROID_HOME/system-images/android-35/google_apis/x86_64
 
-          
+    - name: Verify Platform Tools Installation
+      run: |
+            ls -la $ANDROID_HOME/platform-tools
+
+    - name: Update PATH for ADB
+      run: |
+            echo "PATH=$PATH:$ANDROID_HOME/platform-tools" >> $GITHUB_ENV
+    
+    - name: Reload Environment Variables
+      run: |
+            source $GITHUB_ENV
+    
     # Step 7: Create and Start an Android Emulator
     - name: Create Android Emulator
       run: |
