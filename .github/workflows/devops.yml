@@ -58,10 +58,17 @@ jobs:
     - name: Accept Android SDK Licenses
       run: |
             yes | sdkmanager --licenses
+    
+    - name: Verify System Image Installation
+      run: |
+            ls -la $ANDROID_HOME/system-images/android-35/google_apis/x86_64
+          
+
     # Step 7: Create and Start an Android Emulator
     - name: Create Android Emulator
       run: |
             echo "no" | avdmanager create avd -n test-emulator -k "system-images;android-35;google_apis;x86_64" --device "pixel"
+
     - name: Start Android Emulator
       run: |
             $HOME/android-sdk/emulator/emulator -avd test-emulator -no-window -no-audio -gpu off -netdelay none -netspeed full &
