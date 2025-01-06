@@ -6,7 +6,9 @@ install:
 format:
 	#format code
 	#black *.py app/*.py
-
+adb_test:
+	adb
+	adb devices
 lint:
 	#flake8 or pylint
 
