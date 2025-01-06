@@ -8,6 +8,10 @@ format:
 	#black *.py app/*.py
 adb_test:
 	adb devices
+
+run_emulator:
+	sdkmanager --list | grep system-images
+	#emulator -avd avd_name  "-avd Pixel8_API_34"
 lint:
 	#flake8 or pylint
 

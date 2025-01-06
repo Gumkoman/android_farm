@@ -35,6 +35,7 @@ jobs:
     - name: Test ADB
       run: |
           make adb_test
+          make run_emulator
     - name: Lint with pylint
       run: |
           #make lint
