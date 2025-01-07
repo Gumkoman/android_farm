@@ -89,13 +89,13 @@ jobs:
     - name: Start Android Emulator
       run: |
             $ANDROID_HOME/emulator/emulator -avd test-emulator -no-window -no-audio -gpu off -no-accel -netdelay none -netspeed full -verbose &
-            sleep 5
+            sleep 120
             adb devices
 
     - name: Wait for Emulator
       run: |
             adb devices
-            timeout 180 adb wait-for-device || (echo "Emulator did not start in time" && exit 1)
+            timeout 60 adb wait-for-device || (echo "Emulator did not start in time" && exit 1)
             adb shell input keyevent 82
 
     - name: List Available AVDs
