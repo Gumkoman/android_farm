@@ -96,16 +96,17 @@ jobs:
       run: |
             adb devices
             timeout 60 adb wait-for-device || (echo "Emulator did not start in time" && exit 1)
-            adb shell input keyevent 82
+#            adb shell input keyevent 4
 
-    - name: List Available AVDs
-      run: |
-            $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avd
+#    - name: List Available AVDs
+#      run: |
+#            $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avd
     
     - name: Verify ADB and Emulator
       run: |
             adb devices
             adb shell getprop ro.build.version.sdk
+            adb shell input keyevent 4
 
 #    - name: Install dependencies
 #      run: |
