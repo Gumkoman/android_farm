@@ -62,7 +62,6 @@ jobs:
     - name: Add cmdline-tools to PATH
       run: |
             export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-
       
     - name: Install Required System Image with Debugging
       run: |
@@ -83,24 +82,26 @@ jobs:
       run: |
             ls -la $ANDROID_HOME/platform-tools
             
-    # Step 7: Create and Start an Android Emulator
     - name: Create Android Emulator
       run: |
             echo "no" | avdmanager create avd -n test-emulator -k "system-images;android-35;google_apis;x86_64" --device "pixel"
 
     - name: Start Android Emulator
       run: |
-            $HOME/android-sdk/emulator/emulator -avd test-emulator -no-window -no-audio -gpu off -netdelay none -netspeed full &
+            $ANDROID_HOME/emulator/emulator -avd test-emulator -no-window -no-audio -gpu off -netdelay none -netspeed full -verbose &
+            sleep 5
+            adb devices
 
-
-
-    # Step 8: Wait for Emulator to Boot
     - name: Wait for Emulator
       run: |
-            adb wait-for-device
+            adb devices
+            timeout 180 adb wait-for-device || (echo "Emulator did not start in time" && exit 1)
             adb shell input keyevent 82
 
-    # Step 9: Verify ADB and Emulator Installation
+    - name: List Available AVDs
+      run: |
+            $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager list avd
+    
     - name: Verify ADB and Emulator
       run: |
             adb devices
