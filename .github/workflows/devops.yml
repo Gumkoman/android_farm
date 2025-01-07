@@ -57,7 +57,7 @@ jobs:
     - name: Install Android SDK Components
       run: |
             sdkmanager --update
-            sdkmanager --verbose "platform-tools" "emulator" "platforms;android-35" "system-images;android-35;google_apis;arm64-v8a" "build-tools;35.0.0"
+            sdkmanager --verbose "platform-tools" "emulator" "platforms;android-35" "system-images;android-35;google_apis;armeabi-v7a" "build-tools;35.0.0"
           
     - name: Add cmdline-tools to PATH
       run: |
@@ -65,11 +65,11 @@ jobs:
       
     - name: Install Required System Image with Debugging
       run: |
-            sdkmanager --verbose "system-images;android-35;google_apis;arm64-v8a"
+            sdkmanager --verbose "system-images;android-35;google_apis;armeabi-v7a"
     
     - name: Verify System Image Installation
       run: |
-            ls -la $ANDROID_HOME/system-images/android-35/google_apis/arm64-v8a
+            ls -la $ANDROID_HOME/system-images/android-35/google_apis/armeabi-v7a
 
     - name: Update PATH for ADB
       run: |
@@ -84,7 +84,7 @@ jobs:
             
     - name: Create Android Emulator
       run: |
-            echo "no" | avdmanager create avd -n test-emulator -k "system-images;android-35;google_apis;arm64-v8a" --device "pixel"
+            echo "no" | avdmanager create avd -n test-emulator -k "system-images;android-35;google_apis;armeabi-v7a" --device "pixel"
 
     - name: Start Android Emulator
       run: |
