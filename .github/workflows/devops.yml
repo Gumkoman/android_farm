@@ -106,7 +106,7 @@ jobs:
       run: |
             adb devices
             adb shell getprop ro.build.version.sdk
-            adb shell input keyevent 4
+#            adb shell input keyevent 4
 
 #    - name: Install dependencies
 #      run: |
