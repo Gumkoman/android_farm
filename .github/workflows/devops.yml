@@ -88,7 +88,7 @@ jobs:
 
     - name: Start Android Emulator
       run: |
-            $ANDROID_HOME/emulator/emulator -avd test-emulator -no-window -no-audio -gpu off -netdelay none -netspeed full -verbose &
+            $ANDROID_HOME/emulator/emulator -avd test-emulator -no-window -no-audio -gpu off -no-accel -netdelay none -netspeed full -verbose &
             sleep 5
             adb devices
 
