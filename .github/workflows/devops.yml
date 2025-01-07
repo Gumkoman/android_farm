@@ -69,7 +69,7 @@ jobs:
     
     - name: Verify System Image Installation
       run: |
-            ls -la $ANDROID_HOME/system-images/android-35/google_apis/x86_64
+            ls -la $ANDROID_HOME/system-images/android-35/google_apis/arm64-v8a
 
     - name: Update PATH for ADB
       run: |
